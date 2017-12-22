@@ -65,7 +65,7 @@ def add_entry():
     db.execute('insert into entries (title, text) values (?, ?)',
                  [request.form['title'], request.form['text']])
     db.commit()
-    flash('New entry was successfully posted')
+    flash('新纪录成功提交')
     return redirect(url_for('show_entries'))
 
 
@@ -74,12 +74,12 @@ def login():
     error = None
     if request.method == 'POST':
         if request.form['username'] != app.config['USERNAME']:
-            error = 'Invalid username'
+            error = '无效的用户名'
         elif request.form['password'] != app.config['PASSWORD']:
-            error = 'Invalid password'
+            error = '无效的密码'
         else:
             session['logged_in'] = True
-            flash('You were logged in')
+            flash('你已经登录')
             return redirect(url_for('show_entries'))
     return render_template('login.html', error=error)
 
@@ -87,6 +87,6 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
-    flash('You were logged out')
+    flash('你已经退出')
     return redirect(url_for('show_entries'))
 
