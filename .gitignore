@@ -1,0 +1,7 @@
+__pycache__
+！.gitignore
+.idea
+run.bat
+.vscode
+.eggs
+flaskr.egg-info
