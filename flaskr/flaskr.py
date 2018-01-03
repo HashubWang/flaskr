@@ -90,3 +90,5 @@ def logout():
     flash('你已经退出')
     return redirect(url_for('show_entries'))
 
+if __name__ == '__main__':
+    app.run()
